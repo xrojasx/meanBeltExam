@@ -3,15 +3,18 @@ const User = mongoose.model('User');
 
 module.exports = {
     login: function (req, res) {
+        //search for existing user in DB
         User.findOne({name: req.body.name}, (err, user) => {
 			if(err){
 				return res.status(401).json(err)
             }
+            //store logged in user in session
 			else if(user){
 				req.session.user = user
 				res.json({user: user})
 			}
 			else{
+                //create new user if user doesn't exist
 				let user = new User(req.body);
 				user.save((err) => {
 					if(err){
@@ -36,6 +39,7 @@ module.exports = {
 		}
 	},
 
+    //user logout functionality
     logout: function (req, res) {
         req.session.destroy()
 		return res.json("Logout Successful");
