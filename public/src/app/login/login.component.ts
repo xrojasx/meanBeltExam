@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   //log in user by passing user to the service
   login(){
       this._userservice.login(this.user)
+      
       .then(data => {
           console.log(data);
           this._router.navigateByUrl('/dashboard')

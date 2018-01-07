@@ -1,3 +1,29 @@
-<p>
-  dashboard works!
-</p>
+<div class="wrapper">
+  <h2>To do list</h2>
+  <form #createNewItem = "ngForm" method="post" (submit) = "create()">
+      <label>
+          Title:
+          <input
+              type="text"
+              name="title"
+              [(ngModel)] = "newItems.title"
+              #title = "ngModel"
+              minLength = "8"
+              required>
+          <span *ngIf = "title.invalid">Your title must be 8 characters long.</span>
+      </label><br>
+      <label>
+          Description:
+          <input
+              type="text"
+              name="description"
+              [(ngModel)] = "newItems.description"
+              #polloptionone = "ngModel"
+              minLength = "10"
+              required>
+          <span *ngIf = "description.invalid">Your description must be 10 characters long.</span>
+      </label><br>
+    
+      <button type="submit" name="submit" [disabled] = "createNewPoll.invalid">Submit</button>
+  </form>
+</div>
