@@ -16,10 +16,10 @@ module.exports = {
   
     //create a new poll with each option as a separate variable bound to the newPoll id
     create: function (req, res) {
-        var newItem = new Poll({title: req.body.title, description: req.body.description, owner: req.body.owner});
-        newItem.save((err) => {
+        var newItems = new Item({title: req.body.title, description: req.body.description});
+        newItems.save((err) => {
             if(err){
-                console.log("Error saving poll.")
+                console.log("Error saving item.")
                 return res.status(500).json(err);
             }
         });

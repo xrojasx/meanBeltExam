@@ -18,12 +18,12 @@
               type="text"
               name="description"
               [(ngModel)] = "newItems.description"
-              #polloptionone = "ngModel"
+              #description = "ngModel"
               minLength = "10"
               required>
           <span *ngIf = "description.invalid">Your description must be 10 characters long.</span>
       </label><br>
     
-      <button type="submit" name="submit" [disabled] = "createNewPoll.invalid">Submit</button>
+      <button type="submit" name="submit" [disabled] = "createNewItem.invalid">Submit</button>
   </form>
 </div>
